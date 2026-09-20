@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let service;
   try {
     service = await fetchJson(`/api/services/${encodeURIComponent(id)}`);
-    document.title = `${service.name} — RAE ESSENCE LUXE`;
+    document.title = `${service.name} — RAE ESSENCE HAIR`;
     container.appendChild(buildDetail(service));
     bookingSection.hidden = false;
   } catch (err) {

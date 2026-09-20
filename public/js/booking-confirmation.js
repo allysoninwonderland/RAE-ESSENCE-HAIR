@@ -59,7 +59,7 @@ function buildReceipt(booking) {
 
   const note = document.createElement("p");
   note.className = "receipt__note";
-  note.textContent = "Thank you for your booking request! RAE ESSENCE LUXE will contact you within 24 hours by phone or email to confirm your appointment and arrange payment.";
+  note.textContent = "Thank you for your booking request! RAE ESSENCE HAIR will contact you within 24 hours by phone or email to confirm your appointment and arrange payment.";
 
   card.append(header, bookingId, details, note);
 

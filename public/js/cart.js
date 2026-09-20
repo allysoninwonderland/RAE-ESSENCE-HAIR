@@ -1,7 +1,7 @@
 // Client-side cart, stored in localStorage. The server never reads this directly -
 // it's only sent (as productId + quantity) when the customer checks out.
 
-const CART_KEY = "raeEssenceLuxeCart";
+const CART_KEY = "raeEssenceHairCart";
 
 const Cart = {
   getCart() {

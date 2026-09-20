@@ -58,7 +58,7 @@ function buildReceipt(order) {
 
   const note = document.createElement("p");
   note.className = "receipt__note";
-  note.textContent = "Thank you for your order! RAE ESSENCE LUXE will contact you within 24 hours by phone or email to confirm delivery details and arrange payment (bank transfer or pay on delivery).";
+  note.textContent = "Thank you for your order! RAE ESSENCE HAIR will contact you within 24 hours by phone or email to confirm delivery details and arrange payment (bank transfer or pay on delivery).";
 
   card.append(header, orderId, itemsList, total, note);
 

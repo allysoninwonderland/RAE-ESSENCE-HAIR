@@ -9,7 +9,7 @@ const router = express.Router();
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // No payment gateway is wired up yet: an order is recorded as "pending" and
-// RAE ESSENCE LUXE follows up with the customer directly to arrange payment.
+// RAE ESSENCE HAIR follows up with the customer directly to arrange payment.
 router.post("/", async (req, res) => {
   const { customer, items } = req.body || {};
 

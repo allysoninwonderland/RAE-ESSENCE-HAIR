@@ -1,10 +1,10 @@
-# RAE ESSENCE LUXE
+# RAE ESSENCE HAIR
 
 A full-stack storefront and booking site for a luxury wig, hair, and hair-services brand.
 
 ## 💡 Idea
 
-RAE ESSENCE LUXE sells wigs, bundles, and hair extensions, and also offers hands-on services (wig revamping, hair installation, hand-tied and machine wigging, wig styling, and glueless styling). Customers browse the shop and add wigs/hair to a cart, or browse services and request a booking. There's no online payment gateway yet — every order or booking is recorded as "pending" and the owner follows up directly with the customer to confirm details and arrange payment (bank transfer or pay on delivery).
+RAE ESSENCE HAIR sells wigs, bundles, and hair extensions, and also offers hands-on services (wig revamping, hair installation, hand-tied and machine wigging, wig styling, and glueless styling). Customers browse the shop and add wigs/hair to a cart, or browse services and request a booking. There's no online payment gateway yet — every order or booking is recorded as "pending" and the owner follows up directly with the customer to confirm details and arrange payment (bank transfer or pay on delivery).
 
 ## ✨ Features
 
@@ -47,7 +47,7 @@ RAE ESSENCE LUXE sells wigs, bundles, and hair extensions, and also offers hands
    ```
 5. Visit `http://localhost:3000` for the storefront, or `http://localhost:3000/admin/login.html` for the admin dashboard.
 
-The database file (`data/rae-essence-luxe.sqlite`) is created automatically on first run and seeded with 6 placeholder products and 6 placeholder services.
+The database file (`data/rae-essence-hair.sqlite`) is created automatically on first run and seeded with 6 placeholder products and 6 placeholder services.
 
 ## 🔐 Admin Access
 

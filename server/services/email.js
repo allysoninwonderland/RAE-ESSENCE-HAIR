@@ -3,7 +3,7 @@ const env = require("../config/env");
 // Uses Resend's HTTP API directly (no SDK needed — Node has built-in fetch).
 // Sends from Resend's shared testing address, which works without verifying
 // a custom domain as long as the recipient is the Resend account's own email.
-const FROM_ADDRESS = "RAE ESSENCE LUXE <onboarding@resend.dev>";
+const FROM_ADDRESS = "RAE ESSENCE HAIR <onboarding@resend.dev>";
 
 async function sendAdminNotification(subject, html) {
   if (!env.resendApiKey) {

@@ -1,7 +1,7 @@
 {
-  "name": "rae-essence-luxe",
+  "name": "rae-essence-hair",
   "version": "1.0.0",
-  "description": "RAE ESSENCE LUXE - luxury wigs, hair, and hair services",
+  "description": "RAE ESSENCE HAIR - luxury wigs, hair, and hair services",
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js"

@@ -18,7 +18,7 @@ module.exports = {
   // Defaults to a local SQLite file for development. In production, point
   // these at a hosted Turso database (libsql://...) so data survives restarts
   // on hosts without a persistent disk.
-  tursoDatabaseUrl: process.env.TURSO_DATABASE_URL || "file:./data/rae-essence-luxe.db",
+  tursoDatabaseUrl: process.env.TURSO_DATABASE_URL || "file:./data/rae-essence-hair.db",
   tursoAuthToken: process.env.TURSO_AUTH_TOKEN,
   // Optional: when set, a notification email is sent to adminNotificationEmail
   // for every new order and booking. Left unset, notifications are just skipped.

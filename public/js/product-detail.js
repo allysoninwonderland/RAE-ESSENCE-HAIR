@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const product = await fetchJson(`/api/products/${encodeURIComponent(id)}`);
-    document.title = `${product.name} — RAE ESSENCE LUXE`;
+    document.title = `${product.name} — RAE ESSENCE HAIR`;
     container.appendChild(buildDetail(product));
   } catch (err) {
     showAlert(alertContainer, err.message, "error");

@@ -2,6 +2,7 @@ const express = require("express");
 const crypto = require("node:crypto");
 const productsRepo = require("../db/productsRepo");
 const ordersRepo = require("../db/ordersRepo");
+const emailService = require("../services/email");
 
 const router = express.Router();
 
@@ -66,6 +67,13 @@ router.post("/", async (req, res) => {
   for (const item of resolvedItems) {
     await productsRepo.decrementStock(item.productId, item.quantity);
   }
+
+  // Awaited (not fire-and-forget) so it still completes on serverless hosts,
+  // which can suspend the function as soon as the response is sent.
+  await emailService.notifyNewOrder(
+    { reference, customerName: name, customerEmail: email, customerPhone: phone, customerAddress: address, notes, totalNaira },
+    resolvedItems
+  );
 
   res.status(201).json({ reference });
 });

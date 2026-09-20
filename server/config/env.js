@@ -20,4 +20,11 @@ module.exports = {
   // on hosts without a persistent disk.
   tursoDatabaseUrl: process.env.TURSO_DATABASE_URL || "file:./data/rae-essence-luxe.db",
   tursoAuthToken: process.env.TURSO_AUTH_TOKEN,
+  // Optional: when set, a notification email is sent to adminNotificationEmail
+  // for every new order and booking. Left unset, notifications are just skipped.
+  resendApiKey: process.env.RESEND_API_KEY,
+  // Resend's free tier only allows sending to the address the account was
+  // signed up with, until a custom domain is verified. Switch this to the
+  // business inbox once a domain is verified with Resend.
+  adminNotificationEmail: process.env.ADMIN_NOTIFICATION_EMAIL || "onyimowoonojalice@gmail.com",
 };

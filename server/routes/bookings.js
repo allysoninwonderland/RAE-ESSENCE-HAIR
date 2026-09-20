@@ -2,6 +2,7 @@ const express = require("express");
 const crypto = require("node:crypto");
 const servicesRepo = require("../db/servicesRepo");
 const bookingsRepo = require("../db/bookingsRepo");
+const emailService = require("../services/email");
 
 const router = express.Router();
 
@@ -40,6 +41,16 @@ router.post("/", async (req, res) => {
     preferredDate,
     notes: notes || null,
     reference,
+  });
+
+  await emailService.notifyNewBooking({
+    reference,
+    serviceName: service.name,
+    preferredDate,
+    customerName: name,
+    customerEmail: email,
+    customerPhone: phone,
+    notes,
   });
 
   res.status(201).json({ reference, bookingId });

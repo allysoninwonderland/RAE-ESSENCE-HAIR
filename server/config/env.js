@@ -24,7 +24,7 @@ module.exports = {
   // for every new order and booking. Left unset, notifications are just skipped.
   resendApiKey: process.env.RESEND_API_KEY,
   // Resend's free tier only allows sending to the address the account was
-  // signed up with, until a custom domain is verified. Switch this to the
-  // business inbox once a domain is verified with Resend.
-  adminNotificationEmail: process.env.ADMIN_NOTIFICATION_EMAIL || "onyimowoonojalice@gmail.com",
+  // signed up with, until a custom domain is verified — the Resend account
+  // is signed up as info.raeessence@gmail.com for that reason.
+  adminNotificationEmail: process.env.ADMIN_NOTIFICATION_EMAIL || "info.raeessence@gmail.com",
 };

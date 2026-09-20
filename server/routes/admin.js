@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const env = require("../config/env");
+const adminSession = require("../lib/adminSession");
 const productsRepo = require("../db/productsRepo");
 const servicesRepo = require("../db/servicesRepo");
 const ordersRepo = require("../db/ordersRepo");
@@ -21,18 +22,17 @@ router.post("/login", (req, res) => {
     return res.status(401).json({ error: "Invalid credentials" });
   }
 
-  req.session.isAdmin = true;
+  res.setHeader("Set-Cookie", adminSession.createCookie());
   res.json({ ok: true });
 });
 
 router.post("/logout", (req, res) => {
-  req.session.destroy(() => {
-    res.json({ ok: true });
-  });
+  res.setHeader("Set-Cookie", adminSession.clearCookie());
+  res.json({ ok: true });
 });
 
 router.get("/session", (req, res) => {
-  res.json({ isAdmin: Boolean(req.session && req.session.isAdmin) });
+  res.json({ isAdmin: adminSession.isValid(req) });
 });
 
 router.use(requireAdminAuth);

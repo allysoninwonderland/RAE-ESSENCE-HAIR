@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — RAE ESSENCE LUXE</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <div class="admin-topbar">
+      <h1 class="admin-topbar__title">RAE ESSENCE LUXE Admin</h1>
+      <button type="button" class="btn btn--secondary btn--sm" id="logoutButton">Log Out</button>
+    </div>
+
+    <nav class="admin-tabs">
+      <button type="button" class="admin-tabs__button is-active" data-tab="products">Products</button>
+      <button type="button" class="admin-tabs__button" data-tab="services">Services</button>
+      <button type="button" class="admin-tabs__button" data-tab="orders">Orders</button>
+      <button type="button" class="admin-tabs__button" data-tab="bookings">Bookings</button>
+    </nav>
+
+    <div id="alertContainer" class="container" style="padding-top: var(--space-md);"></div>
+
+    <section class="admin-panel" data-panel="products">
+      <div class="admin-panel__header">
+        <h2>Products</h2>
+        <button type="button" class="btn btn--primary btn--sm" id="addProductButton">Add Product</button>
+      </div>
+      <div class="admin-table__wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="admin-panel" data-panel="services" hidden>
+      <div class="admin-panel__header">
+        <h2>Services</h2>
+        <button type="button" class="btn btn--primary btn--sm" id="addServiceButton">Add Service</button>
+      </div>
+      <div class="admin-table__wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Duration</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="servicesTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="admin-panel" data-panel="orders" hidden>
+      <div class="admin-panel__header">
+        <h2>Orders</h2>
+      </div>
+      <div class="admin-table__wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Customer</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="admin-panel" data-panel="bookings" hidden>
+      <div class="admin-panel__header">
+        <h2>Bookings</h2>
+      </div>
+      <div class="admin-table__wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Booking</th>
+              <th>Customer</th>
+              <th>Service</th>
+              <th>Preferred Date</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="bookingsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <div class="modal-overlay" id="productModalOverlay" hidden>
+    <div class="modal">
+      <h2 class="modal__title" id="productModalTitle">Add Product</h2>
+      <div id="productModalAlert"></div>
+      <form id="productForm" class="form" novalidate>
+        <input type="hidden" id="productId">
+        <div class="form__group">
+          <label class="form__label" for="productName">Name</label>
+          <input class="form__input" type="text" id="productName" required>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="productDescription">Description</label>
+          <textarea class="form__textarea" id="productDescription" rows="3" required></textarea>
+        </div>
+        <div class="modal__row">
+          <div class="form__group">
+            <label class="form__label" for="productPrice">Price (₦)</label>
+            <input class="form__input" type="number" id="productPrice" min="0" step="1" required>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="productStock">Stock quantity</label>
+            <input class="form__input" type="number" id="productStock" min="0" required>
+          </div>
+        </div>
+        <div class="modal__row">
+          <div class="form__group">
+            <label class="form__label" for="productLength">Length (inches)</label>
+            <input class="form__input" type="number" id="productLength" min="0">
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="productCategory">Category</label>
+            <input class="form__input" type="text" id="productCategory" placeholder="e.g. Lace Wig">
+          </div>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="productHairType">Hair type</label>
+          <input class="form__input" type="text" id="productHairType" placeholder="e.g. 100% Human Hair — Straight">
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="productImage">Image path or URL</label>
+          <input class="form__input" type="text" id="productImage" placeholder="assets/images/example.svg">
+        </div>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--secondary" id="cancelProductButton">Cancel</button>
+          <button type="submit" class="btn btn--primary">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="serviceModalOverlay" hidden>
+    <div class="modal">
+      <h2 class="modal__title" id="serviceModalTitle">Add Service</h2>
+      <div id="serviceModalAlert"></div>
+      <form id="serviceForm" class="form" novalidate>
+        <input type="hidden" id="serviceId">
+        <div class="form__group">
+          <label class="form__label" for="serviceName">Name</label>
+          <input class="form__input" type="text" id="serviceName" required>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="serviceDescription">Description</label>
+          <textarea class="form__textarea" id="serviceDescription" rows="3" required></textarea>
+        </div>
+        <div class="modal__row">
+          <div class="form__group">
+            <label class="form__label" for="servicePrice">Starting price (₦)</label>
+            <input class="form__input" type="number" id="servicePrice" min="0" step="1" required>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="serviceDuration">Duration estimate</label>
+            <input class="form__input" type="text" id="serviceDuration" placeholder="e.g. 2–3 hours">
+          </div>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="serviceImage">Image path or URL</label>
+          <input class="form__input" type="text" id="serviceImage" placeholder="assets/images/example.svg">
+        </div>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--secondary" id="cancelServiceButton">Cancel</button>
+          <button type="submit" class="btn btn--primary">Save Service</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="orderModalOverlay" hidden>
+    <div class="modal">
+      <h2 class="modal__title">Order Detail</h2>
+      <div id="orderDetailContent"></div>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--secondary" id="closeOrderModalButton">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="bookingModalOverlay" hidden>
+    <div class="modal">
+      <h2 class="modal__title">Booking Detail</h2>
+      <div id="bookingDetailContent"></div>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--secondary" id="closeBookingModalButton">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/data-helpers.js"></script>
+  <script src="../js/admin-dashboard.js"></script>
+  <script src="../js/admin-products.js"></script>
+  <script src="../js/admin-services.js"></script>
+  <script src="../js/admin-orders.js"></script>
+  <script src="../js/admin-bookings.js"></script>
+</body>
+</html>

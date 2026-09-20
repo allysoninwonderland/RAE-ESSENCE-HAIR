@@ -1,0 +1,20 @@
+{
+  "name": "rae-essence-luxe",
+  "version": "1.0.0",
+  "description": "RAE ESSENCE LUXE - luxury wigs, hair, and hair services",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0"
+  }
+}

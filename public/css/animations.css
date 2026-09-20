@@ -1,0 +1,24 @@
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card,
+.service-card,
+.receipt__card {
+  animation: fade-in-up 0.4s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card,
+  .service-card,
+  .receipt__card {
+    animation: none;
+  }
+}

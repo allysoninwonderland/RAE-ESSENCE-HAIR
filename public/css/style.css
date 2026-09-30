@@ -316,7 +316,7 @@ h3 {
 .product-card__image {
   width: 100%;
   aspect-ratio: 1 / 1;
-  object-fit: cover;
+  object-fit: contain;
   background: var(--color-accent-light);
 }
 
@@ -370,7 +370,7 @@ h3 {
   border-radius: var(--radius-lg);
   background: var(--color-accent-light);
   aspect-ratio: 1 / 1;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .product-detail__category {
